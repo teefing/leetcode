@@ -23,21 +23,18 @@ function reverse (a, b) {
   return pre
 }
 
-
 /**
  * @param {ListNode} head
  * @param {number} k
  * @return {ListNode}
  */
-var reverseKGroup = function(head, k) {
-  if (head === null) return null
+var reverseKGroup = function (head, k) {
   let a, b
   a = b = head
   for (let i = 0; i < k; i++){
     if (b === null) return head
     b = b.next
   }
-
   let newHead = reverse(a, b)
   a.next = reverseKGroup(b, k)
   return newHead
