@@ -16,7 +16,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var minDepth = function (root) {
+var minDepth1 = function (root) {
   const getMinDepth = (p) => {
     if (!p) return 0;
     let left = getMinDepth(p.left),
@@ -33,5 +33,22 @@ var minDepth = function (root) {
     }
   };
   return getMinDepth(root);
+};
+
+var minDepth = function (root) {
+  if (!root) return 0
+  const queue = [root]
+  let depth = 1, cur
+  while (queue.length) {
+    const len = queue.length
+    for (let i = 0; i < len; i++){
+      cur = queue.shift()
+      if(!cur.left && !cur.right) return depth
+      cur.left && queue.push(cur.left)
+      cur.right && queue.push(cur.right)
+    }
+    depth++
+  }
+  return depth
 };
 // @lc code=end
