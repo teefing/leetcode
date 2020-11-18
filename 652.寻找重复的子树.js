@@ -23,6 +23,7 @@ var findDuplicateSubtrees = function(root) {
   let duplicateNodes = [];
   function collect(root) {
     if (!root) return '#';
+    // 采用后序遍历的方式将每个子树的子树序列都存储起来
     const serializedTree = root.val + ','+ collect(root.left) + collect(root.right);
     if (map.has(serializedTree)) {
       const count = map.get(serializedTree);

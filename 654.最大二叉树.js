@@ -18,6 +18,8 @@
  */
 var constructMaximumBinaryTree = function (nums) {
   if(nums.length === 0) return null
+
+  // 获取最大值和最大值的索引
   let max = -Infinity
   let maxIndex = 0
   for (let i = 0; i < nums.length; i++) {

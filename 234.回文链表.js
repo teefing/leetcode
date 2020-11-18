@@ -21,6 +21,7 @@ var isPalindrome = function(head) {
   left = head
   return reverse(head)
 };
+// 可以将链表看作只有左子树的一棵树，对其进行后序遍历就能从后往前获得值
 function reverse (right) {
   if (right === null) return true
   let res = reverse(right.next)

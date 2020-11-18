@@ -32,6 +32,7 @@ var deleteNode = function (root, key) {
     if (root.left === null) return root.right
     if (root.right === null) return root.left
     if (root.left !== null && root.right !== null) {
+      // 找到右子树中的最大值的节点
       let minNode = getMin(root.right)
       root.val = minNode.val
       root.right = deleteNode(root.right, minNode.val)

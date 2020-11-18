@@ -11,7 +11,7 @@
  */
 var subsets = function(nums) {
   let res = [], track = []
-  function backtrack (nums, start, track) {
+  function backtrack (nums, start) {
     res.push(track.slice())
     for (let i = start; i < nums.length; i++){
       track.push(nums[i])
@@ -19,7 +19,7 @@ var subsets = function(nums) {
       track.pop()
     }
   }
-  backtrack(nums, 0, track, res)
+  backtrack(nums, 0)
   return res
 };
 

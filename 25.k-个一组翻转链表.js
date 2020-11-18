@@ -24,6 +24,7 @@ function reverse (a, b) {
 }
 
 /**
+ * 从节点head开始K个一组翻转链表，返回新链表的头节点
  * @param {ListNode} head
  * @param {number} k
  * @return {ListNode}

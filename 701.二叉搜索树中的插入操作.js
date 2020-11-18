@@ -18,10 +18,28 @@
  * @param {number} val
  * @return {TreeNode}
  */
-var insertIntoBST = function(root, val) {
+var insertIntoBST1 = function(root, val) {
   if (root === null) return new TreeNode(val)
   if (val > root.val) root.right = insertIntoBST(root.right, val)
   else if (val < root.val) root.left = insertIntoBST(root.left, val)
+  return root
+};
+
+var insertIntoBST = function (root, val) {
+  if(root === null) return new TreeNode(val)
+  let p = root, prev = root
+  while (p) {
+    prev = p
+    if (val < p.val) {
+      p = p.left
+    } else if (val > p.val) {
+      p = p.right
+    }
+  }
+
+  if (val < prev.val) prev.left = new TreeNode(val)
+  else if(val > prev.val) prev.right = new TreeNode(val)
+
   return root
 };
 // @lc code=end
