@@ -16,31 +16,18 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-var convertBST = function(root) {
-  let arr = []
+var convertBST = function (root) {
   
-  const inOrder = (p) => {
-    if(!p) return
-    inOrder(p.left)
-    arr.push(p.val)
-    inOrder(p.right)
-  }
-  inOrder(root)
-  let sumArr =  [0]
-  // console.log('arr: ', arr);
-  for (let i = arr.length - 1; i > 0; i--){
-    sumArr.unshift(sumArr[0]+arr[i])
+  let sum = 0
+  function traverse (node) {
+    if (node === null) return 0
+    traverse(node.right)
+    sum += node.val
+    node.val = sum
+    traverse(node.left)
   }
 
-  const process = (p) => {
-    if (!p) return
-    process(p.left)
-    const val = sumArr.shift()
-    p.val += val
-    process(p.right)
-  }
-  // console.log('sumArr: ', sumArr);
-  process(root)
+  traverse(root)
   return root
 };
 // @lc code=end
