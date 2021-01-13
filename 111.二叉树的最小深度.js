@@ -36,19 +36,21 @@ var minDepth1 = function (root) {
 };
 
 var minDepth = function (root) {
-  if (!root) return 0
-  const queue = [root]
-  let depth = 1, cur
+  if (!root) return 0;
+  const queue = [root];
+  let depth = 1,
+    cur;
   while (queue.length) {
-    const len = queue.length
-    for (let i = 0; i < len; i++){
-      cur = queue.shift()
-      if(!cur.left && !cur.right) return depth
-      cur.left && queue.push(cur.left)
-      cur.right && queue.push(cur.right)
+    const len = queue.length;
+    for (let i = 0; i < len; i++) {
+      cur = queue.shift();
+      if (!cur.left && !cur.right) return depth;
+      cur.left && queue.push(cur.left);
+      cur.right && queue.push(cur.right);
     }
-    depth++
+    depth++;
   }
-  return depth
+  return depth;
 };
+
 // @lc code=end
