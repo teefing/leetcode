@@ -28,15 +28,30 @@ var coinChange1 = function(coins, amount) {
   return dp(amount);
 };
 
+// var coinChange = function (coins, amount) {
+//   const dp = new Array(amount + 1).fill(amount + 1)
+//   dp[0] = 0
+//   for (let i = 0; i <= amount; i++){
+//     for (let coin of coins) {
+//       if (i - coin < 0) continue
+//       dp[i] = Math.min(dp[i], dp[i-coin]+1)
+//     }
+//   }
+//   return dp[amount] === amount + 1 ? -1 : dp[amount]
+// };
+
 var coinChange = function (coins, amount) {
-  const dp = new Array(amount + 1).fill(amount + 1)
+  // 凑成总金额i的最少硬币个数
+  const dp = new Array(amount+1).fill(amount+1)
+  // dp[i] = min(dp[i-1]+1, )
   dp[0] = 0
-  for (let i = 0; i <= amount; i++){
-    for (let coin of coins) {
-      if (i - coin < 0) continue
-      dp[i] = Math.min(dp[i], dp[i-coin]+1)
+  for(let i=0;i<=amount;i++){
+    for(let coin of coins) {
+      if(coin > i) continue
+      dp[i] = Math.min(dp[i-coin]+1, dp[i])
     }
   }
-  return dp[amount] === amount + 1 ? -1 : dp[amount]
+
+  return dp[amount] === amount+1 ? -1 : dp[amount]
 };
 // @lc code=end
