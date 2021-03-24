@@ -10,20 +10,24 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-  let maxLen = 0
-  let i = 0
-  const slideWindow = []
-  while (i < s.length) {
-    if (!slideWindow.includes(s[i])) {
-      slideWindow.push(s[i])
-    } else {
-      slideWindow.shift()
-      continue
+  if(s.length === 0) return 0
+  let right = 0, left = 0, window = [], maxLen = -Infinity;
+  while(right < s.length) {
+    let rightVal = s[right]
+    right++
+
+    while(window.includes(rightVal)) {
+      left++
+      window.shift()
     }
-    maxLen = Math.max(maxLen, slideWindow.length)
-    i++
+
+    window.push(rightVal)
+    maxLen = Math.max(window.length, maxLen)
   }
   return maxLen
-};
+}
+
+// console.log(lengthOfLongestSubstring("abcabcbb"))
+
 // @lc code=end
 
