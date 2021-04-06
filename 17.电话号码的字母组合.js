@@ -27,8 +27,6 @@ var letterCombinations = function(digits) {
   let res = []
 
   function backtrack (curNumberIndex = 0) {
-    
-    
     if (track.length === digits.length) {
       res.push(track.slice())
       return
